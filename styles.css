@@ -9,7 +9,7 @@
 
 html {
   box-sizing: border-box;
-  font-family: 'Open Sans', helvetica, arial, sans-serif;
+  font-family: 'Open Sans';
   font-size: 16px;
 }
 
@@ -49,13 +49,32 @@ h1 {
   margin-right: -10px;
 }
 
-.grid__col {
+.grid__col{
   width: 100%;
   padding-right: 10px;
   padding-left: 10px
 }
 
+
+
 /* TODO setja upp grid fyrir >= 1000px */
+@media (min-width: 1000px) {
+
+  .grid__row {
+  display: flex;
+  flex-direction: row;
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+.grid__col{
+  width: 50%;
+  padding-right: 10px;
+  padding-left: 10px
+}
+
+}
+
 
 /* TODO koma mynd fyrir á öðrum stað í < 1000px */
 
@@ -65,21 +84,31 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-
   background: #eee;
+  padding-top: 2em;
+  padding-bottom: 2em;
 }
 
 /*
   .card kemur óbreytt úr sýnilausn á verkefni 5 fyrir utan                                                
   responsive stíla og að það fær `height: 100%;`
 */
+
+
+.card__tag {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+
+
 .card {
   display: flex;
   flex-direction: column;
+
   margin-bottom: 10px;
   padding: 10px;
   width: 100%;
-  height: 100%
   max-width: 470px;
   max-height: 300px;
   overflow: hidden;
@@ -87,6 +116,14 @@ h1 {
   background-color: #fff;
   border: 2px solid #aaa;
   border-radius: 5px;
+}
+
+.card__title {
+  margin-bottom: 20px;
+
+  font-size: 1.375em;
+  line-height: 1;
+  word-break: break-word;
 }
 
 .card__content {
@@ -125,6 +162,5 @@ h1 {
   margin-right: 10px;
 }
 
-/* TODO .card stílar úr v5 (eða sýnilausn...) */
 
 /* TODO responsive stílar fyrir .card */
