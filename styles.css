@@ -20,11 +20,17 @@ main {
   padding-right: 20px;
 }
 
-/* TODO taka ætti padding af main þegar komið er fyrir ofan hámarksbreidd */
+/* Tekur padding af við hámarksbreidd*/
+  @media (min-width: 1500px) {
+    main{
+      padding-right: 0px;
+      padding-left: 0px; 
+    }
+  }
 
 h1 {
   text-align: center;
-  margin: 20px 0;
+  margin: 20px;
 }
 
 .text {
@@ -40,87 +46,111 @@ h1 {
   margin-bottom: 20px;
 }
 
-/* grid fyrir efni, setja þarf upp í html */
-
 .grid__row {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   margin-left: -10px;
   margin-right: -10px;
 }
 
-.grid__col{
+
+.grid__row:nth-of-type(2) {
+  flex-direction: column-reverse;
+}
+
+
+/* Færir mynd þegar stærð >=1000px */
+  @media (min-width: 1000px) {
+    .grid__row:nth-of-type(2) {
+      flex-direction: row;
+    }
+  }
+
+.grid__col {
   width: 100%;
   padding-right: 10px;
-  padding-left: 10px
+  padding-left: 10px;
 }
+  @media (min-width: 1000px){
+    .grid__col {
+      width: 50%;
+      margin-bottom: 40px;
+    }
+  }
 
-
-
-/* TODO setja upp grid fyrir >= 1000px */
-@media (min-width: 1000px) {
-
-  .grid__row {
+.cards__row {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
   margin-left: -10px;
   margin-right: -10px;
+  margin-bottom: 20px;
 }
 
-.grid__col{
-  width: 50%;
+/* card dálkur tekur allt viewport */
+.cards__col {
+  margin: 0 0 20px;
+  width: 100%;
   padding-right: 10px;
-  padding-left: 10px
+  padding-left: 10px;
 }
 
-}
+/* Card dálkur tekur helming af viewport */
+  @media(min-width: 700px) {
+    .cards__col {
+      width: 50%;
+    }
+  }
 
-
-/* TODO koma mynd fyrir á öðrum stað í < 1000px */
-
-/* TODO útfæra grid fyrir cards */
+  /* Card dálkur tekur þriðjung af viewport */
+  @media(min-width: 1000px) {
+    .cards__col {
+      width: 33.3333%;
+    }
+  }
 
 .cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  background: #eee;
-  padding-top: 2em;
-  padding-bottom: 2em;
 }
-
-/*
-  .card kemur óbreytt úr sýnilausn á verkefni 5 fyrir utan                                                
-  responsive stíla og að það fær `height: 100%;`
-*/
-
-
-.card__tag {
-  font-weight: bold;
-  margin-right: 10px;
-}
-
-
+  @media (min-width: 700px) {
+    .cards {
+      margin-bottom: 30px;
+    }
+  }
 
 .card {
   display: flex;
   flex-direction: column;
-
   margin-bottom: 10px;
   padding: 10px;
   width: 100%;
+  height: 100%;
   max-width: 470px;
   max-height: 300px;
   overflow: hidden;
-
   background-color: #fff;
+  border-bottom: 2px solid #aaa;
   border: 2px solid #aaa;
   border-radius: 5px;
 }
 
+  @media (max-width: 699px) {
+    .card {
+      border: none;
+      border-bottom: 2px solid #aaa;
+      border-radius: 0px;
+      padding: 0px;
+      padding-bottom: 20px;
+      max-width: 100%;
+      max-height: 100%;
+
+    }
+  }
+  
+
 .card__title {
   margin-bottom: 20px;
-
   font-size: 1.375em;
   line-height: 1;
   word-break: break-word;
@@ -130,30 +160,46 @@ h1 {
   display: flex;
   flex: 1;
 }
+  @media (max-width: 699px) {
+    .card__content {
+      flex-direction: column;
+    }
+  }
 
 .card__text {
   font-size: 1em;
   line-height: 1.375;
   overflow: auto;
   word-break: break-word;
+  margin-bottom: 20px;
 }
+  @media (min-width: 700px) {
+    .card__text {
+      margin-bottom: 0px;
+    }
+  }
 
-.card__image {
-  padding-left: 20px;
-  flex: 0 0 150px;
-}
 
 .card__img {
   max-width: 100%;
 }
 
+.card__image {
+  padding-left: 0px;
+  flex: 0 0 150px;
+}
+  @media (min-width: 700px) {
+    .card__image {
+      padding-left: 20px;
+    }
+  }
+
+
 .card__tags {
   margin-top: 10px;
-
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-
   list-style: none;
 }
 
@@ -162,5 +208,3 @@ h1 {
   margin-right: 10px;
 }
 
-
-/* TODO responsive stílar fyrir .card */
